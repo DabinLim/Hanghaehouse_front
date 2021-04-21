@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { deleteCookie, getCookie, setCookie } from "../../shared/Cookie";
 import axios from "axios";
 
-axios.defaults.baseURL = 'http://13.125.21.123';
-axios.defaults.headers.common['token'] = getCookie('is_login')
+axios.defaults.baseURL = 'http://13.125.236.134';
+// axios.defaults.headers.common['token'] = getCookie('is_login')
 
 const userSlice = createSlice({
   name: "user",

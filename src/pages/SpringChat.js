@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {api} from '../redux/modules/chat';
 
 
-const InterestedChat = (props) => {
+const SpringChat = (props) => {
   const dispatch = useDispatch()
   const [modalVisible, setModalVisible] = React.useState(false);
   const user = useSelector(state => state.user.user)
@@ -19,7 +19,7 @@ const InterestedChat = (props) => {
   console.log(room_info[0].userInterested)
   const checkInter = (e) => {
           for(let i=0; i<user_inter_list.length; i++){
-              if(e.userInterested === user_inter_list[i]){
+              if(e.userInterested === 'Spring'){
                   return true
               }
           }
@@ -87,4 +87,4 @@ const CreateRoom = styled.button`
   box-shadow: 1px 1px lightgray;
 `;
 
-export default InterestedChat;
+export default SpringChat;

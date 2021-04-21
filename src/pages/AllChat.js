@@ -2,9 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import ChatRoom from "../components/ChatRoom";
 import CreateRoomModal from "../components/CreateRoomModal";
-import { getCookie } from "../shared/Cookie";
-import Stomp from 'stompjs';
-import SockJS from 'sockjs-client';
 import {useDispatch, useSelector} from 'react-redux';
 import {api} from '../redux/modules/chat';
 

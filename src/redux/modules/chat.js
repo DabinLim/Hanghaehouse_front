@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { deleteCookie, getCookie, setCookie } from "../../shared/Cookie";
 import axios from "axios";
 import { response } from "../Mock/RoomList";
-axios.defaults.baseURL = "http://13.125.21.123";
+axios.defaults.baseURL = "http://13.125.236.134";
 
 const chatSlice = createSlice({
   name: "chat",

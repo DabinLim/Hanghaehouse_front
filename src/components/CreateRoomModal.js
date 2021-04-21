@@ -53,6 +53,7 @@ const CreateRoomModal = (props) => {
       dispatch(api.createRoom(room_name, interested, user_name));
       setRoomName("");
       setInterested("");
+      close()
     }
   };
 

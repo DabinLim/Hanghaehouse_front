@@ -18,10 +18,16 @@ const Sidebar = (props) => {
                 <Line/>
                 <Text cursor='pointer' _onClick={()=>{history.push('/all')}}>모든 채팅방 보기</Text>
                 <Text cursor='pointer' _onClick={()=> {history.push('/interested')}}>추천 채팅방</Text>
-                <Text>참여하고 있는 채팅방</Text>
+                <Line/>
+                <Text cursor='pointer' _onClick={()=> {history.push('/reactchat')}}>리액트 채팅방</Text>
+                <Text cursor='pointer' _onClick={()=> {history.push('/nativechat')}}>리액트 네이티브 채팅방</Text>
+                <Text cursor='pointer' _onClick={()=> {history.push('/springchat')}}>스프링 채팅방</Text>
+                <Text cursor='pointer' _onClick={()=> {history.push('/nodechat')}}>노드 채팅방</Text>
                 <LogOutContainer>
                 <Text cursor='pointer' _onClick={()=>{
-                    dispatch(api.logOutSV(history))
+                    if(window.confirm('정말 로그아웃 하시겠습니까?')){
+                        dispatch(api.logOutSV(history))
+                    }
                     }}>로그아웃</Text>
                 </LogOutContainer>
             </Container>
@@ -44,13 +50,12 @@ const ProfileContainer = styled.div`
     width:100%;
     height: 250px;
     align-items:center;
-    border: 1px solid black;
 `;
 
 const LogOutContainer = styled.div`
     display:flex;
     flex-direction:column;
-    min-height:50vh;
+    min-height:45%;
     justify-content:flex-end;
     align-items:center;
 `;

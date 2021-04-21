@@ -8,6 +8,10 @@ import Home from './pages/Home';
 import Profile from './pages/Profile'
 import AllChat from './pages/AllChat';
 import InterestedChat from './pages/InterestedChat';
+import ReactChat from './pages/ReactChat';
+import ReactNativeChat from './pages/ReactNativeChat';
+import SpringChat from './pages/SpringChat';
+import NodeChat from './pages/NodeChat';
 import Sidebar from './components/Sidebar';
 import ChatPage from './pages/ChatPage';
 import NoInterested from './components/NoInterested';
@@ -35,7 +39,7 @@ function App() {
   React.useEffect(() => {
     dispatch(api.loginCheck())
   },[])
-  if(is_login){
+  if(is_login && history.location.pathname ==='/'){
     history.push('/all')
   }
   if(is_login && userInfo.userInterested.length<1 && modalVisible === false){
@@ -52,6 +56,10 @@ function App() {
         <Route exact path='/main' component={Main}/>
         <Route exact path='/all' component={AllChat}/>
         <Route exact path='/interested' component={InterestedChat}/>
+        <Route exact path='/reactchat' component={ReactChat}/>
+        <Route exact path='/nativechat' component={ReactNativeChat}/>
+        <Route exact path='/springchat' component={SpringChat}/>
+        <Route exact path='/nodechat' component={NodeChat}/>
         <Route exact path='/profile' component={Profile}/>
         <Route exact path='/chatpage/:id' component={ChatPage}/>
       </ConnectedRouter>

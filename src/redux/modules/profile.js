@@ -3,7 +3,7 @@ import { getCookie } from "../../shared/Cookie";
 import { updateUserInfo } from "./user";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://13.125.21.123";
+axios.defaults.baseURL = "http://13.125.236.134";
 axios.defaults.headers.common["token"] = getCookie("is_login");
 axios.defaults.headers.post["Content-Type"] = "application/json;charset=UTF-8";
 

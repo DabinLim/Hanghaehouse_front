@@ -48,6 +48,7 @@ const Container = styled.div`
 const Title = styled.h4`
     padding:0.5rem;
     margin:5px 0px;
+    cursor:pointer;
 `;
 
 const TextBox = styled.div`

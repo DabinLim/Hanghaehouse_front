@@ -12,9 +12,9 @@ import TextWrite from "../components/TextWrite";
 
 
 let msg_check;
-axios.defaults.baseURL = "http://13.125.21.123";
+axios.defaults.baseURL = "http://13.125.236.134";
 const ChatPage = (props) => {
-  let sock = new SockJS("http://13.125.21.123/ws-stomp");
+  let sock = new SockJS("http://13.125.236.134/ws-stomp");
   let ws = Stomp.over(sock);
   const dispatch = useDispatch();
   const user_info = useSelector((state) => state.user.user);
@@ -106,8 +106,22 @@ const ChatPage = (props) => {
   // })
 
   React.useEffect(() => {
+    
     const token = getCookie('is_login')
     const chat_logs = chatLogs;
+    const options = {
+      url:`/api/chat/message/${room_id}`,
+      method:'GET'
+    }
+    axios(options).then(response => {
+      console.log(response.data)
+      response.data.forEach(v=>{
+        if(v.type === 'TALK'){
+          chat_logs.push(v)
+        }
+      })
+      setChatLogs([...chat_logs])
+    }).catch(err => console.log(err))
     ws.connect(
       {
         token: token,
@@ -158,10 +172,10 @@ const ChatPage = (props) => {
       <Container>
         <Content>
           <ContentBox>
-            {chatLogs.map((v) => {
+            {chatLogs.map((v,idx) => {
               if (v.type === "TALK" && v.userName === user_name) {
                 return (
-                  <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                  <div key={idx} style={{ display: "flex", justifyContent: "flex-end" }}>
                     <ChatBox>
                     <MsgBox>
                       {v.userProfile? <Image src={v.userProfile} size="24" /> : <Image src='https://firebasestorage.googleapis.com/v0/b/react-chat-2b875.appspot.com/o/blankprofile.png?alt=media&token=839ae664-a63d-4e77-92c3-b1030ebde97e' size="24" />}
@@ -177,6 +191,7 @@ const ChatPage = (props) => {
               } else if (v.type === "TALK" && v.userName !== user_name) {
                 return (
                   <div
+                    key={idx}
                     style={{ display: "flex", justifyContent: "flex-start" }}
                   >
                     <ChatBox>
@@ -193,7 +208,7 @@ const ChatPage = (props) => {
                 );
               } else {
                 return (
-                  <div style={{ display: "flex", justifyContent: "center" }}>
+                  <div key={idx} style={{ display: "flex", justifyContent: "center" }}>
                     {v.message}
                   </div>
                 );
@@ -202,7 +217,7 @@ const ChatPage = (props) => {
           </ContentBox>
         </Content>
         <TextBox>
-          <MsgInput type='text' ref={msg} placeholder='텍스트를 입력해라' onKeyPress={(e)=>{
+          <MsgInput type='text' ref={msg} placeholder='텍스트를 입력하세요.' onKeyPress={(e)=>{
             if(e.key === 'Enter'){
               sendMsg()
             }
