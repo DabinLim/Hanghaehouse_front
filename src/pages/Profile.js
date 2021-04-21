@@ -6,6 +6,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import { useDispatch, useSelector } from "react-redux";
 import { reduxprofile, set_preview } from "../redux/modules/profile";
+import './profile.css';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -72,13 +73,16 @@ const Profile = (props) => {
     //   dispatch((preview, name, interest));
     // }
     const many = {};
-    if (interest1 !== ""||interest2 !== ""||interest3 !== "") {
+    if (interest1 !== "") {
       many[interest1] = (many[interest1] || 0) + 1;
+    }
+    if (interest2 !== "") {
       many[interest2] = (many[interest2] || 0) + 1;
+    }
+    if (interest3 !== "") {
       many[interest3] = (many[interest3] || 0) + 1;
     }
-    console.log(many)
-    
+
     for (const key in many) {
       if (many[key] !== 1) {
         window.alert("중복된 관심사가 있습니다. 다시 확인해주세요.");
@@ -129,7 +133,12 @@ const Profile = (props) => {
           <Div2>
             <Imgdiv>
               <Image size="200" src={preview ? preview : `${props.img}`} />
-              <Imgchange type="file" ref={fileInput} onChange={selectFile} />
+              <Imgchange
+                type="file"
+                accept="image/*"
+                ref={fileInput}
+                onChange={selectFile}
+              />
             </Imgdiv>
             <Profilechg>
               <Nickdiv>
@@ -244,6 +253,7 @@ const Cancelbtn = styled.button`
 `;
 
 const Full = styled.div`
+font-family: 'GmarketSansMedium';
   display: flex;
   width: 100%;
   height: 100%;
@@ -282,10 +292,12 @@ const Imgchange = styled.input`
 const Profilechg = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 20px;
   width: 500px;
   @media only screen and (max-width: 1100px) {
     width: 300px;
+  }
+  @media only screen and (min-width: 1100px) {
+    margin-left: 20px;
   }
 `;
 
@@ -321,19 +333,24 @@ const Interdiv = styled.div`
 const Intertext = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: flex-end;
 `;
 
-const Interspan = styled.span`
+const Interspan = styled.div`
+  --size:1.5rem;
   display: flex;
   font-weight: 600;
-  font-size: 1.5em;
+  font-size: var(--size);
+  height: var(--size);
+  margin-right: 5px;
 `;
 
-const Interp = styled.p`
+const Interp = styled.div`
   display: flex;
   font-weight: 500;
-  font-size: 0.8em;
-  margin-bottom: 0px;
+  margin: 0px;
+  font-size: 0.8rem;
+  height: 1rem;
 `;
 
 const Image = styled.div`
