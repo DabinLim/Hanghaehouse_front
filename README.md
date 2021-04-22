@@ -28,11 +28,11 @@
 
 ### [회원가입/로그인 페이지]
 - 로그인, 회원가입 기능
-<br>
-<img src='https://user-images.githubusercontent.com/77574867/115686853-967a0b00-a394-11eb-8683-a93308bd2d6c.png' width='600' height='450'>
     - 상태관리를 활용한 실시간 유효성 체크 (중복체크는 서버)
     - 리덕스 상태를 활용하여 한 페이지 내에서 로그인,회원가입 컴포넌트 교체
     - 로그인 시 서버로부터 받은 토큰을 쿠키에 저장
+<img src='https://user-images.githubusercontent.com/77574867/115686853-967a0b00-a394-11eb-8683-a93308bd2d6c.png' width='600' height='450'>
+
 
 
 * 채팅방 조회
