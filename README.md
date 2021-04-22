@@ -1,6 +1,8 @@
 # 항해하우스 (Front-end) // [Back-end : 깃허브][googlelink]
 [googlelink]: https://github.com/HanghaeHouse/backend
 
+<img width="30%" src="https://user-images.githubusercontent.com/79817983/115668927-ab4da300-a382-11eb-8a7c-9798acdcfcb8.gif"/>
+
 ## 🖥 프로젝트 소개
 * 주제 : 관심사가 같은 인원이 모여서 채팅이 가능한 채팅방
 
